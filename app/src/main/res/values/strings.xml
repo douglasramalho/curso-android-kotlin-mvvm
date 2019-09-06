@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NyBooks</string>
+
+    <!-- Books Activity -->
+    <string name="books_title">Books</string>
+    <string name="books_error_401">Não autorizado</string>
+    <string name="books_error_400_generic">Erro não tradado</string>
+    <string name="books_error_500_generic">Erro catastrófico</string>
+
+    <!-- Book Details Activity -->
+    <string name="book_details_title">Book Details</string>
+    <string name="book_details_title_label">Title</string>
+    <string name="book_details_description_label">Description</string>
+</resources>
