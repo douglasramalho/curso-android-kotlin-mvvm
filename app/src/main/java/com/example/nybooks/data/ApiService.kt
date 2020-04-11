@@ -1,5 +1,7 @@
 package com.example.nybooks.data
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -9,7 +11,13 @@ object ApiService {
 
         return Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/svc/books/v3/")
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(
+                MoshiConverterFactory.create(
+                    Moshi.Builder()
+                        .add(KotlinJsonAdapterFactory())
+                        .build()
+                )
+            )
             .build()
     }
 
