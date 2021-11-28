@@ -7,19 +7,20 @@
     tools:context=".presentation.books.BooksActivity">
 
     <include
+        android:id="@+id/include_toolbar"
         layout="@layout/include_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ViewFlipper
-        android:id="@+id/viewFlipperBooks"
+        android:id="@+id/view_flipper_books"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarMain">
+        app:layout_constraintTop_toBottomOf="@id/include_toolbar">
 
         <ProgressBar
             android:layout_width="wrap_content"
@@ -27,13 +28,13 @@
             android:layout_gravity="center" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerBooks"
+            android:id="@+id/recycler_books"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_book" />
 
         <TextView
-            android:id="@+id/textViewError"
+            android:id="@+id/text_view_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />

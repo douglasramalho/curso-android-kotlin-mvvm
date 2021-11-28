@@ -6,25 +6,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nybooks.R
 import com.example.nybooks.data.repository.BooksApiDataSource
+import com.example.nybooks.databinding.ActivityBooksBinding
 import com.example.nybooks.presentation.base.BaseActivity
 import com.example.nybooks.presentation.details.BookDetailsActivity
-import kotlinx.android.synthetic.main.activity_books.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 
 class BooksActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_books)
+        val binding = ActivityBooksBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setupToolbar(toolbarMain, R.string.books_title)
+        setupToolbar(binding.includeToolbar.toolbarMain, R.string.books_title)
 
         val viewModel: BooksViewModel = BooksViewModel.ViewModelFactory(BooksApiDataSource())
                 .create(BooksViewModel::class.java)
 
         viewModel.booksLiveData.observe(this, Observer {
             it?.let { books ->
-                with(recyclerBooks) {
+                with(binding.recyclerBooks) {
                     layoutManager = LinearLayoutManager(this@BooksActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
                     adapter = BooksAdapter(books) { book ->
@@ -37,10 +37,10 @@ class BooksActivity : BaseActivity() {
 
         viewModel.viewFlipperLiveData.observe(this, Observer {
             it?.let { viewFlipper ->
-                viewFlipperBooks.displayedChild = viewFlipper.first
+                binding.viewFlipperBooks.displayedChild = viewFlipper.first
 
                 viewFlipper.second?.let { errorMessageResId ->
-                    textViewError.text = getString(errorMessageResId)
+                    binding.textViewError.text = getString(errorMessageResId)
                 }
             }
         })

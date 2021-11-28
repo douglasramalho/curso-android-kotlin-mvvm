@@ -14,7 +14,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".presentation.books.BooksActivity">
+        <activity
+            android:exported="true"
+            android:name=".presentation.books.BooksActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
